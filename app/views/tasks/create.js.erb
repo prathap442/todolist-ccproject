@@ -1,1 +1,7 @@
 <%binding.pry%>
+$('form[id = "new_task_ajax_form"]')[0].reset();
+<%if @task.id?%>
+  $('#task_table_body').append('<%=escape_javascript render 'success_task'%>')
+<%else%>
+  $('#notice').append('task not got created')
+<%end%> 

@@ -1,0 +1,3 @@
+<%= form_with(model: task, remote: true) do |form| %>
+ <%= render 'inner_form_parts',form: form,task: task%>
+<% end %>

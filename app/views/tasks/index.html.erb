@@ -13,12 +13,12 @@
 
   <tbody id='task_table_body'>
     <% @tasks.each do |task| %>
-      <tr>
+      <tr id='task_<%=task.id%>''
         <td><%= task.name %></td>
         <td><%= task.description %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', task_path(task), remote: true%></td>
+        <td><%= link_to 'Edit', edit_task_path(task), remote: true %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,9 +26,10 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path,id: 'new_task_link' %>
+<%= link_to 'New Task', new_task_path,id: 'new_task_link', remote: true%>
 
-
-<%= form_with(model: @task, remote: true, id: 'new_task_ajax_form') do |form| %>
-  <%= render 'inner_form_parts',form: form,task: @task%>
-<% end %>
+<div id='part_changer'>
+  <%= form_with(model: @task, remote: true, id: 'new_task_ajax_form') do |form| %>
+    <%= render 'inner_form_parts',form: form,task: @task%>
+  <% end %>
+</div>

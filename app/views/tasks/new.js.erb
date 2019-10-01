@@ -1,0 +1,4 @@
+$('#part_changer').html('')
+<% @task =Task.new %>
+$('#part_changer').append('<%= escape_javascript render "new" %>')
+
